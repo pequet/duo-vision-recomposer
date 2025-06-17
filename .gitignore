@@ -1,0 +1,27 @@
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore script output folders
+output_*/ 
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Log files
+*.log
+
+# Script output folders
+output_*/
+
+# Development Tooling
+.cursor*
+.repomix*
+.specstory/
+node_modules/
+
+# Editor-specific
+.cursor/
+.vscode/
