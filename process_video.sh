@@ -92,8 +92,17 @@ usage() {
     echo "    --no-audio"
     echo "        (Optional) Create a silent video file."
     echo ""
+    echo "    --info"
+    echo "        Displays information about the video file and exits."
+    echo ""
     echo "    --help"
     echo "        Displays this help message and exits."
+    echo ""
+    echo "USAGE NOTES"
+    echo "    - Codec Compatibility: For best results, ensure custom crop dimensions (width and"
+    echo "      height) are even numbers. Odd-numbered dimensions can cause encoding artifacts"
+    echo "      (e.g., a thin colored line at the video's edge), which may only appear"
+    echo "      in snapshots and not during regular playback."
     exit 1
 }
 
@@ -115,6 +124,7 @@ BLEND_MODE="average"
 CONTRAST="1.2"
 NO_AUDIO=false
 USER_SPECIFIED_LENGTH=false # Flag to track if user set --length
+INFO_MODE=false
 
 # Parse named arguments
 while [[ "$#" -gt 0 ]]; do
@@ -127,6 +137,7 @@ while [[ "$#" -gt 0 ]]; do
         --blend-mode) BLEND_MODE="$2"; shift ;;
         --contrast) CONTRAST="$2"; shift ;;
         --no-audio) NO_AUDIO=true ;;
+        --info) INFO_MODE=true ;;
         *) echo "Unknown parameter passed: $1"; usage ;;
     esac
     shift
@@ -156,19 +167,28 @@ echo "  - Duration: ${VIDEO_DURATION}s"
 echo "  - Frame Rate: ${FPS} fps"
 echo "---"
 
+# --- Info Mode ---
+if [[ "$INFO_MODE" = true ]]; then
+    echo "--- Video Info ---"
+    echo "File: $INPUT_FILE"
+    echo "Dimensions: ${VIDEO_WIDTH}x${VIDEO_HEIGHT}"
+    echo "Duration: ${VIDEO_DURATION}s"
+    echo "Frame Rate: ${FPS} fps ($FRAME_RATE)"
+    echo "------------------"
+    exit 0
+fi
+
 # --- Set Defaults Based on Probe Data ---
 if [ -z "$LENGTH" ]; then
     LENGTH=$VIDEO_DURATION
 fi
 
 if [ -z "$LEFT_CROP" ]; then
-    HALF_WIDTH=$((VIDEO_WIDTH / 2))
-    LEFT_CROP="${HALF_WIDTH}:${VIDEO_HEIGHT}:0:0"
+    LEFT_CROP="iw/2:ih:0:0"
 fi
 
 if [ -z "$RIGHT_CROP" ]; then
-    HALF_WIDTH=$((VIDEO_WIDTH / 2))
-    RIGHT_CROP="${HALF_WIDTH}:${VIDEO_HEIGHT}:${HALF_WIDTH}:0"
+    RIGHT_CROP="iw/2:ih:iw/2:0"
 fi
 
 # --- Setup Output Directory and Summary ---

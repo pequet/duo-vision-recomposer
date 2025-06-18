@@ -1,5 +1,5 @@
 --- Parameters ---
-Left Crop: 335:328:0:0
-Right Crop: 335:328:410:0
+Left Crop: 334:328:0:0
+Right Crop: 334:328:410:0
 Blend Mode: average
 Contrast: 1.2
