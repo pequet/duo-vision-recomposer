@@ -1,4 +1,4 @@
-# Duo-Vision Re-composer
+# Duo-Vision Recomposer
 
 A command-line tool for artists, filmmakers, and archivists to re-imagine and re-compose films shot in the "Duo-Vision" split-screen format.
 
@@ -55,7 +55,7 @@ To process the entire film, simply omit the `--start` and `--length` constraints
 A shining new tool will overlay a clip with its own reverse image, creating a haunting blend of temporal echoes and spectral premonitions.
 
 **Anaglyph 3D**
-Also planned is a 'Chaos Mix' mode for the entire Duo-Vision suite, bringing a new, disorienting depth to all your creations.
+Also planned is a 'Chaos Mix' mode for the entire Duo-Vision Suite, bringing a new, disorienting depth to all your creations.
 
 ## Support the Project
 

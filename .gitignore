@@ -1,27 +1,68 @@
-# OS-specific files
+# macOS
 .DS_Store
 Thumbs.db
+.AppleDouble
+.LSOverride
 
-# Ignore script output folders
-output_*/ 
+# Thumbnails
+._*
 
-# Environment variables
-.env
-.env.*
-!.env.example
+# Files that might appear in the root of a volume
+.Spotlight-V100
+.Trashes
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Environments
+.env*
+.venv
+env/
+venv/
+ENV/
+VENV/
+
+# IDE specific (including symlinks)
+.cursor
+.vscode
+.cursor/
+.vscode/
+
+# Build artifacts
+dist/
+build/
+*.o
+*.a
+*.so
 
 # Log files
 *.log
+logs/
 
-# Script output folders
-output_*/
+# Temporary files
+*.tmp
+*~
+*.swp
+*.swo
 
-# Development Tooling
-.cursor*
+# Exclude inbox and archive directories
+**/inbox/**
+**/archive/**
+**/archives/**
+**/archived/**
+**/trash/**
+
+# repomix temp files
 .repomix*
-.specstory/
-node_modules/
 
-# Editor-specific
-.cursor/
-.vscode/
+# Development context (including symlinks)
+.specstory
+.specstory/
+
+# Memory Bank 
+memory-bank/
